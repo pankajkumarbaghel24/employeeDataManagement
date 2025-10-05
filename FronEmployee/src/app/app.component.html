@@ -1,0 +1,129 @@
+
+<div class="container">
+  <!-- Form Section -->
+
+<div class="row">
+  <form [formGroup]="studentForm" style="margin-top: 10px;">
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Full Name</mat-label>
+        <input matInput placeholder="Enter your name" formControlName="name" required>
+      </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter your email" formControlName="email" required>
+          <div *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.invalid">
+    <small *ngIf="studentForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="studentForm.get('email')?.errors?.['email']">Please enter a valid email address.</small>
+  </div>
+        </mat-form-field>
+
+       <mat-form-field class="example-full-width">
+          <mat-label>Position</mat-label>
+      <mat-select formControlName="position" required>
+        <mat-option value="HR">HR</mat-option>
+        <mat-option value="Senior">Senior Developer</mat-option>
+        <mat-option value="Junior" >Junior Developer</mat-option>
+         <mat-option value="Manager" >Manager</mat-option>
+          <mat-option value="Other" >Other</mat-option>
+      </mat-select>
+        </mat-form-field>
+      </div>
+
+
+  <div class="form-group">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>DOB</mat-label>
+        <input matInput type="date" formControlName="DOB" required>
+      </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+        <mat-label>mobile_number</mat-label>
+        <input matInput placeholder="Enter mobile number" formControlName="mobile_number" required>
+      </mat-form-field>
+
+  </div>
+
+<div class="form-group">
+  <label class="gender-label">Gender:</label>
+  <mat-radio-group formControlName="gender" class="gender-radio-group" aria-label="Select gender">
+    <mat-radio-button value="Male">Male</mat-radio-button>
+    <mat-radio-button value="Female">Female</mat-radio-button>
+    <mat-radio-button value="Other">Other</mat-radio-button>
+  </mat-radio-group>
+
+</div>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" id="SubmitButton" type="submit"  *ngIf="!onSubmitHidden" (click)="onSubmit()">Save</button>
+        <button mat-raised-button color="accent" id="UpdateButton" type="button"  *ngIf="!onUpdateHidden" (click)="onUpdate()">Update</button>
+        <button mat-raised-button color="warn" type="button" (click)="onClear()">Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table Section -->
+  <hr>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+
+        <th>Name</th>
+        <th>mobile_number</th>
+        <th>Email</th>
+        <th>Position</th>
+        <th>DOB</th>
+         <th>Gender</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of tablesData">
+        <td>{{ student.name }}</td>
+        <td>{{ student.mobile_number }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.position }}</td>
+         <td>{{ student.DOB }}</td>
+          <td>{{ student.gender }}</td>
+        <td>
+          <button (click)="onEdit(student._id)" mat-raised-button color="primary" class="btn edit-btn">Edit</button>
+          <button (click)="onDelete(student._id)" mat-raised-button color="warn" class="btn delete-btn">Delete</button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
+<!-- 
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trainee of tablesData">
+        <td>{{ trainee.id }}</td>
+        <td>{{ trainee.name }}</td>
+        <td>{{ trainee.dob | date:'dd/MM/yyyy' }}</td>
+        <td>{{ trainee.course_name }}</td>
+        <td>
+          <button (click)="onEdit(trainee.id)" class="btn edit-btn">Update</button>
+          <button (click)="onDelete(trainee.id)" class="btn delete-btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+    
+    
+  
+
