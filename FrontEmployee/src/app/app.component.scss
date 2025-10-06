@@ -1,0 +1,43 @@
+.employee-container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.table-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.styled-table th {
+  background: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.styled-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.styled-table tr:hover {
+  background: #e3f2fd;
+}
+
+mat-paginator {
+  border-top: 1px solid #ddd;
+}
+
+.search-bar {
+  margin: 15px 0;
+  width: 60vw;
+}

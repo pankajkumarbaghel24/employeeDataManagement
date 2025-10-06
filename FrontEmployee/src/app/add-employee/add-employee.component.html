@@ -1,0 +1,78 @@
+<div class="dialog-header">
+  <h2>{{ dialogTitle }}</h2>
+  <button mat-icon-button class="close-btn" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="studentForm">
+
+    <!-- Name + Email -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter full name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter email" required>
+        <mat-error *ngIf="studentForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="studentForm.get('email')?.hasError('email')">
+          Enter a valid email
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Position + DOB -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Position</mat-label>
+        <mat-select formControlName="position" required>
+          <mat-option value="HR">HR</mat-option>
+          <mat-option value="Senior">Senior Developer</mat-option>
+          <mat-option value="Junior">Junior Developer</mat-option>
+          <mat-option value="Manager">Manager</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput type="date" formControlName="DOB" required>
+      </mat-form-field>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobile_number" placeholder="Enter mobile number" required>
+      </mat-form-field>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-row gender-row">
+      <label class="gender-label">Gender:</label>
+      <mat-radio-group formControlName="gender" class="gender-radio-group">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+        <mat-radio-button value="Other">Other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button mat-raised-button color="primary" *ngIf="!onSubmitHidden" (click)="onSubmit()">Save</button>
+      <button mat-raised-button color="accent" *ngIf="!onUpdateHidden" (click)="onUpdate()">Update</button>
+      <button mat-raised-button color="warn" type="button" (click)="onClear()">Clear</button>
+    </div>
+
+  </form>
+</div>
+
+
+
